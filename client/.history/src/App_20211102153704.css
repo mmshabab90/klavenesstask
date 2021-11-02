@@ -1,0 +1,9 @@
+.home__page {
+  height: 87vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
