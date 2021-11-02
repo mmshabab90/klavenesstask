@@ -16,7 +16,6 @@ import {
 } from "react-bootstrap";
 import moment from "moment";
 import { LinearProgress } from "@material-ui/core";
-import ContractForm from "./ContractForm";
 
 export default function Contracts() {
   const searchInput = useSelector(selectSearchInput);
@@ -60,11 +59,7 @@ export default function Contracts() {
           <h1 style={{ marginBottom: 25, marginTop: 10 }}>Contracts</h1>
         </Col>
         <Col xs={4} sm={4} md={2}>
-          <Button
-            variant="outline-success"
-            className="m-2"
-            onClick={handelShowModal}
-          >
+          <Button variant="outline-success" className="m-2">
             Add New
           </Button>
         </Col>
@@ -131,8 +126,6 @@ export default function Contracts() {
             </Card>
           ))}
       </CardGroup>
-
-      <ContractForm show={showModal} handleClose={handleCloseModal} />
     </Container>
   );
 }
