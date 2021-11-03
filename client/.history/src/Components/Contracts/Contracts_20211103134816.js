@@ -67,18 +67,22 @@ export default function Contracts() {
 
   return (
     <Container>
-      <div class="d-flex justify-content-between">
-        <h1 style={{ marginBottom: 25, marginTop: 10 }}>Contracts</h1>
-        <Button
-          variant="link"
-          className="m-2"
-          onClick={handelShowModal}
-          style={{ textDecoration: "none" }}
-        >
-          <i class="fas fa-plus"></i> Add New
-        </Button>
-      </div>
-
+      <Row xs={8} md={8}>
+        <Col xs={7} sm={7} md={10}>
+          <h1 style={{ marginBottom: 25, marginTop: 10 }}>Contracts</h1>
+        </Col>
+        <Col xs={5} sm={5} md={2} style={{ marginTop: 5 }}>
+          <div class="d-flex flex-row">
+            <Button
+              variant="outline-success"
+              className="m-2"
+              onClick={handelShowModal}
+            >
+              Add New
+            </Button>
+          </div>
+        </Col>
+      </Row>
       {loading && <LinearProgress color="secondary" />}
       <Row xs={1} md={2} lg={3} className="g-4">
         {contracts &&

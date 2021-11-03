@@ -70,15 +70,14 @@ export default function Contracts() {
       <div class="d-flex justify-content-between">
         <h1 style={{ marginBottom: 25, marginTop: 10 }}>Contracts</h1>
         <Button
-          variant="link"
-          className="m-2"
+          variant="outline-success"
+          // className="m-2"
           onClick={handelShowModal}
-          style={{ textDecoration: "none" }}
         >
-          <i class="fas fa-plus"></i> Add New
+          Add New
         </Button>
       </div>
-
+      
       {loading && <LinearProgress color="secondary" />}
       <Row xs={1} md={2} lg={3} className="g-4">
         {contracts &&

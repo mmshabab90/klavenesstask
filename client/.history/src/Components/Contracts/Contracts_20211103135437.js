@@ -73,9 +73,8 @@ export default function Contracts() {
           variant="link"
           className="m-2"
           onClick={handelShowModal}
-          style={{ textDecoration: "none" }}
         >
-          <i class="fas fa-plus"></i> Add New
+          <i class="far fa-plus"></i> Add New
         </Button>
       </div>
 

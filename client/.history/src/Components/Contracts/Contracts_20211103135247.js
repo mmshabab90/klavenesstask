@@ -70,12 +70,11 @@ export default function Contracts() {
       <div class="d-flex justify-content-between">
         <h1 style={{ marginBottom: 25, marginTop: 10 }}>Contracts</h1>
         <Button
-          variant="link"
+          variant="outline-success"
           className="m-2"
           onClick={handelShowModal}
-          style={{ textDecoration: "none" }}
         >
-          <i class="fas fa-plus"></i> Add New
+          <i class="far fa-plus-square"></i> Add New
         </Button>
       </div>
 

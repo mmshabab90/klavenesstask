@@ -20,12 +20,21 @@
     },
     {
       "id": 12345590,
-      "company": "Test Company",
+      "company": "Test Company ",
       "contractId": "12345590",
       "periodEnd": "2022-01-27T02:01",
       "periodStart": "2021-12-29T02:01",
-      "scheduledForRenewal": false,
+      "scheduledForRenewal": true,
       "negotiationRenewalDate": "2022-01-04T02:01"
+    },
+    {
+      "id": 954448670,
+      "contractId": "954448670",
+      "company": "Test Company 2 edited",
+      "periodStart": "2021-11-04T13:07",
+      "periodEnd": "2022-11-03T13:07",
+      "scheduledForRenewal": false,
+      "negotiationRenewalDate": "2022-10-18T13:07"
     }
   ]
 }
