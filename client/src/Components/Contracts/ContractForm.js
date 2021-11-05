@@ -42,6 +42,25 @@ function ContractForm({ show, handleClose }) {
     ),
   });
 
+  const handleOnSubmit = async (values) => {
+    if (selectedItem) {
+      const response = await api.put(`/contracts/${selectedItem.id}`, values);
+      dispatch(setUpdateContract(response.data));
+      handleClose();
+    } else {
+      const randInt = Math.floor(Math.random() * 1000000000);
+      const request = {
+        id: randInt,
+        contractId: JSON.stringify(randInt),
+        ...values,
+      };
+
+      const response = await api.post("/contracts", request);
+      dispatch(setAddContract(response.data));
+      handleClose();
+    }
+  };
+
   const handleDelete = async (id) => {
     await api.delete(`/contracts/${id}`);
     dispatch(setDeleteContract(id));
@@ -62,34 +81,7 @@ function ContractForm({ show, handleClose }) {
           enableReinitialize
           initialValues={initialValues}
           validationSchema={validationSchema}
-          onSubmit={async (values) => {
-            if (selectedItem) {
-              const response = await api.put(
-                `/contracts/${selectedItem.id}`,
-                values
-              );
-              dispatch(setUpdateContract(response.data));
-              handleClose();
-            } else {
-              const randInt = Math.floor(Math.random() * 1000000000);
-              const request = {
-                id: randInt,
-                contractId: JSON.stringify(randInt),
-                ...values,
-              };
-
-              const response = await api.post("/contracts", request);
-              dispatch(setAddContract(response.data));
-              handleClose();
-              // await axios
-              //   .post(api_url, JSON.stringify(values))
-              //   .then((res) => {
-              //     dispatch(setAddContract(res.data));
-              //     handleClose();
-              //   })
-              //   .catch((err) => console.log(err));
-            }
-          }}
+          onSubmit={handleOnSubmit}
         >
           {({ values }) => (
             <Form>
@@ -161,7 +153,7 @@ function ContractForm({ show, handleClose }) {
                       Close
                     </Button>
                     <FormSubmitBtn variant="outline-primary">
-                      Save Changes
+                      {selectedItem ? "Save Changes" : "Submit"}
                     </FormSubmitBtn>
                   </ButtonGroup>
                 </Grid>

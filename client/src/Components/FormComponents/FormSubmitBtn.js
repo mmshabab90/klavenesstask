@@ -7,12 +7,12 @@ function FormSubmitBtn({ children, ...otherProps }) {
   const handleSubmit = () => {
     submitForm();
   };
-  const configButton = {
+  const btnConfig = {
     variant: "outline-primary",
     color: "primary",
     onClick: handleSubmit,
   };
-  return <Button {...configButton}>{children}</Button>;
+  return <Button {...btnConfig}>{children}</Button>;
 }
 
 export default FormSubmitBtn;

@@ -7,7 +7,7 @@ import { setSignedIn, setUserData } from "../features/userSlice";
 export default function LoginComponent() {
   const dispatch = useDispatch();
 
-  const login = (response) => {
+  const responseGoogle = (response) => {
     dispatch(setSignedIn(true));
     dispatch(setUserData(response.profileObj));
   };
@@ -31,8 +31,8 @@ export default function LoginComponent() {
               Login With Google
             </Button>
           )}
-          onSuccess={login}
-          onFailure={login}
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
           isSignedIn={true}
           cookiePolicy={"single_host_origin"}
         />

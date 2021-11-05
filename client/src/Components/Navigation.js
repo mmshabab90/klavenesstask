@@ -4,7 +4,6 @@ import {
   Container,
   Form,
   FormControl,
-  Image,
   InputGroup,
   Nav,
   Navbar,
@@ -47,9 +46,15 @@ const Navigation = () => {
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
         <Navbar.Brand href="/">Klaveness Digital</Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        {isSignedIn && <Navbar.Toggle aria-controls="responsive-navbar-nav" />}
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto" style={{ margin: 5 }}></Nav>
+          {isSignedIn && (
+            <Nav className="me-auto" style={{ margin: 5 }}>
+              <Navbar.Text style={{ marginLeft: 5, marginRight: 5 }}>
+                Welcome: {userData?.name}
+              </Navbar.Text>
+            </Nav>
+          )}
           {isSignedIn && (
             <Nav>
               <Form className="d-flex" style={{ margin: 5 }}>
@@ -71,18 +76,7 @@ const Navigation = () => {
                   </Button>
                 </InputGroup>
               </Form>
-              <Image
-                src={userData?.imageUrl}
-                alt={userData?.name}
-                style={{ marginLeft: 10, marginRight: 5, marginTop: 5 }}
-                width="30"
-                height="30"
-                className="d-inline-block align-top"
-                roundedCircle
-              />
-              <Navbar.Text style={{ marginLeft: 5, marginRight: 5 }}>
-                {userData?.familyName}
-              </Navbar.Text>
+
               <GoogleLogout
                 clientId={process.env.REACT_APP_GAPI_KEY}
                 render={(renderProps) => (

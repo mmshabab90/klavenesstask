@@ -10,12 +10,12 @@ export default function Homepage() {
 
   return (
     <>
-      {!isSignedIn ? (
+      {isSignedIn ? (
+        <Contracts />
+      ) : (
         <Container className="home__page">
           <LoginComponent />
         </Container>
-      ) : (
-        <Contracts />
       )}
     </>
   );

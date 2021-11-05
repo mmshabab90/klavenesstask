@@ -2,18 +2,7 @@ import React from "react";
 import api from "../../api/contracts";
 import { useDispatch, useSelector } from "react-redux";
 import { selectSearchInput } from "../../features/userSlice";
-import {
-  Badge,
-  Button,
-  ButtonGroup,
-  Container,
-  Row,
-  Col,
-  Card,
-  ListGroup,
-  ListGroupItem,
-} from "react-bootstrap";
-import moment from "moment";
+import { Button, Container, Row, Col } from "react-bootstrap";
 import { LinearProgress } from "@material-ui/core";
 import ContractForm from "./ContractForm";
 import {
@@ -22,6 +11,7 @@ import {
   setIsLoading,
   setSelectedContract,
 } from "../../features/contractsSlice";
+import ContractsItem from "./ContractsItem";
 
 export default function Contracts() {
   const searchInput = useSelector(selectSearchInput);
@@ -67,7 +57,7 @@ export default function Contracts() {
 
   return (
     <Container>
-      <div class="d-flex justify-content-between">
+      <div className="d-flex justify-content-between">
         <h1 style={{ marginBottom: 25, marginTop: 10 }}>Contracts</h1>
         <Button
           variant="link"
@@ -75,7 +65,7 @@ export default function Contracts() {
           onClick={handelShowModal}
           style={{ textDecoration: "none" }}
         >
-          <i class="fas fa-plus"></i> Add New
+          <i className="fas fa-plus"></i> Add New
         </Button>
       </div>
 
@@ -96,56 +86,7 @@ export default function Contracts() {
             .sort((a, b) => parseInt(b.contractId) - parseInt(a.contractId))
             .map((obj, idx) => (
               <Col key={`item-${idx}-${obj.company}`}>
-                <Card border="secondary">
-                  <Card.Body>
-                    <Card.Title>
-                      {obj.company}
-                      <span style={{ marginLeft: 5 }}>
-                        {obj.scheduledForRenewal ? (
-                          <Badge bg="success">Renew: Yes</Badge>
-                        ) : (
-                          <Badge bg="danger">Renew: No</Badge>
-                        )}
-                      </span>
-                    </Card.Title>
-                  </Card.Body>
-
-                  <ListGroup className="list-group-flush">
-                    <ListGroupItem>
-                      Period Start
-                      <Badge style={{ margin: 5 }} bg="info">
-                        {moment(obj.periodStart).format("LLL")}
-                      </Badge>
-                    </ListGroupItem>
-                    <ListGroupItem>
-                      Period End
-                      <Badge style={{ margin: 5 }} bg="danger">
-                        {moment(obj.periodEnd).format("LLL")}
-                      </Badge>
-                    </ListGroupItem>
-                    <ListGroupItem>
-                      Renew On
-                      <Badge style={{ margin: 5 }} bg="warning">
-                        {moment(obj.negotiationRenewalDate).format("LLL")}
-                      </Badge>
-                    </ListGroupItem>
-                  </ListGroup>
-                  <Card.Body>
-                    <div className="d-grid gap-2">
-                      <ButtonGroup>
-                        <Button
-                          variant="outline-primary"
-                          size="lg"
-                          onClick={() => handleEdit(obj)}
-                        >
-                          Edit
-                        </Button>
-                      </ButtonGroup>
-                    </div>
-                  </Card.Body>
-
-                  <Card.Footer>Contract# {obj.contractId}</Card.Footer>
-                </Card>
+                <ContractsItem obj={obj} handleEdit={handleEdit} />
               </Col>
             ))}
       </Row>
